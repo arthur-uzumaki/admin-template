@@ -4,7 +4,7 @@ export default function Home() {
   return (
   
      <Layout titulo="Página incial" subtitulo="Contruindo">
-        <h3>Conteúdo</h3>
+        <h3>Seu conteúdo</h3>
      </Layout>
   
   )

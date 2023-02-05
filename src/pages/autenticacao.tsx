@@ -3,9 +3,10 @@ import { FormEvent, useState } from "react";
 import google from '../assets/google.svg';
 import warn from '../assets/warn.svg';
 import { AuthInput } from "../components/auth/AuthInput";
+import { useAuth } from "../data/hook/useAuth";
 
 export default function Autenticacao() {
-
+  const {usuario , loginGoogle} = useAuth()
   const [modo, setModo] = useState<'login' | 'cadastro'>('login')
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
@@ -66,7 +67,7 @@ export default function Autenticacao() {
 
         <hr className="my-6 border-zinc-300 w-full" />
 
-        <button type="submit" onClick={submeter} className='flex items-center justify-center  w-full bg-violet-800 hover:bg-red-400 text-white rounded-lg px-4 py-3 '>
+        <button type="submit" onClick={loginGoogle} className='flex items-center justify-center  w-full bg-violet-800 hover:bg-red-400 text-white rounded-lg px-4 py-3 '>
           <Image src={google} alt='' /> <span className="m-3 text-xl">Entrar com Google</span>
         </button>
 
