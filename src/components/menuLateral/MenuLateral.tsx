@@ -5,10 +5,12 @@ import ajuste from '../../assets/adjustmentsVertical.svg';
 import bell from '../../assets/bell.svg';
 import home from '../../assets/Home.svg';
 import logo from '../../assets/logo.jpg';
-import logout from '../../assets/logout.svg';
+import sai from '../../assets/logout.svg';
+import { useAuth } from '../../data/hook/useAuth';
 
 
 export function MenuLateral() {
+  const {logout} = useAuth()
   return (
     <aside className='flex flex-col text-zinc-700 bg-zinc-200 dark:bg-zinc-900  '>
       <div className='flex flex-col  rounded-sm items-center justify-center  h-20 w-20 bg-gradient-to-r from-green-500  to-yellow-400'>
@@ -23,7 +25,7 @@ export function MenuLateral() {
       </ul>
 
       <ul>
-      <MenuItem className='text-red-600  hover:bg-red-400 hover:text-white ' onClick={() => console.log('saiu')} texto="Sair" icone={<Image  src={logout} alt=''/>} />
+      <MenuItem className='text-red-600  hover:bg-red-400 hover:text-white ' onClick={logout} texto="Sair" icone={<Image  src={sai} alt=''/>} />
 
       </ul>
     </aside>
