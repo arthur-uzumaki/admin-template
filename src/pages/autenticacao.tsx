@@ -6,19 +6,22 @@ import { AuthInput } from "../components/auth/AuthInput";
 import { useAuth } from "../data/hook/useAuth";
 
 export default function Autenticacao() {
-  const {usuario , loginGoogle} = useAuth()
+  const {cadastrar , login , loginGoogle} = useAuth()
   const [modo, setModo] = useState<'login' | 'cadastro'>('login')
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
   const [erro, setErro] = useState('')
 
-  function submeter(e: FormEvent) {
-    if (modo === 'login') {
-      exbirErro('Ocorreu um erro no login!')
-    } else {
-     exbirErro('Ocorreu um erro no cadastro!')
-      console.log('cadastrar')
-    }
+  async function submeter(event: FormEvent) {
+    event.preventDefault()
+      try{
+        
+        modo === 'login' ? await login!(email , senha) : cadastrar!(email , senha)
+      }catch(erroCath){
+        
+        exbirErro(erroCath?.message ?? 'Erro desconhecido!')
+      }
+  
   }
 
   function exbirErro(msg:string , tempoEsgotado = 5){
@@ -94,3 +97,5 @@ export default function Autenticacao() {
 
   )
 }
+
+

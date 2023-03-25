@@ -15,7 +15,7 @@ export function ForcarAutenticacao({ children }: ForcarAutenticacaoProps) {
 
     return (
       <div>
-        
+     
         {children}
       
       </div>
@@ -32,11 +32,12 @@ export function ForcarAutenticacao({ children }: ForcarAutenticacaoProps) {
     )
   }
 
-
-  if(carregando && usuario?.email){
-   
+    
+  if(!carregando && usuario?.email){
     return renderizarConteudo()
+
   }else if(carregando){
+    
     return renderizarCarregando()
   }else{
     Router.push('/autenticacao')
